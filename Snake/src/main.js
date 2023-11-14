@@ -1,5 +1,5 @@
 import '../css/style.css';
-import { Serpent } from '../src/serpent';
+import '../src/serpent.js';
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
