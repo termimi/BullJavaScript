@@ -30,7 +30,7 @@ export class Serpent{
   MoveRight(){
     this.serpentParts.push({ x: this.serpentX +=80 , y: this.serpentY });
 
-    // Si le tableau a atteint la taille maximale, retire la première partie
+    // shift = first
     if (this.serpentParts.length > this.taillePartie) {
       this.serpentParts.shift();
     }
@@ -38,18 +38,23 @@ export class Serpent{
   MoveLeft(){
     this.serpentParts.push({ x: this.serpentX -=80 , y: this.serpentY });
 
-    // Si le tableau a atteint la taille maximale, retire la première partie
+    // pop = last
     if (this.serpentParts.length > this.taillePartie) {
       this.serpentParts.pop();
     }
   }
   MoveUP(){
-    this.serpentParts.push({ x: this.serpentX, y: this.serpentY -=80 });
-
-    // Si le tableau a atteint la taille maximale, retire la première partie
-    if (this.serpentParts.length > this.taillePartie) {
-      this.serpentParts.pop();
-    }
+    for(let i = 0;i< this.serpentParts.length; i++){
+        if(i=0){
+            if (this.serpentParts.length > this.taillePartie){
+                this.serpentParts.push({ x: this.serpentX, y: this.serpentY -=80 });
+            }
+            
+        }
+        else{
+            this.serpentParts.push({ x: this.serpentX -=80, y: this.serpentY });
+        }
+    }   
   }
 
   

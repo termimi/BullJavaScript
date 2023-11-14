@@ -16,8 +16,8 @@ const move = () => {
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, 800, 800);
   snake.drawSnake();
-  //snake.MoveRight();
-  //snake.MoveLeft();
+  snake.MoveRight();
+  snake.MoveLeft();
   snake.MoveUP();
 
    
