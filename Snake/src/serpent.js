@@ -27,11 +27,9 @@ export class Serpent{
 }
   Move(serpentParts, tete){
     let teteSerpent ={x:tete.x, y:tete.y};
-    serpentParts[0] = teteSerpent
+    serpentParts[0] = teteSerpent;
     tete.x +=80;
     for(let i = serpentParts.length -1 ; i> 0; i--){
-      
-      let position = {x: serpentParts[i].x, y: serpentParts[i].y};
       //mouvement
       serpentParts[i].x = serpentParts[i-1].x;
       serpentParts[i].y = serpentParts[i-1].y;
