@@ -1,0 +1,8 @@
+12h20: intoduction projet
+12h37: installation node.js, fichier de base du projet, mise en place structure git.
+13h: introduction à js (tuto)
+15h35: début écriture pseudoCode
+
+Date 14.11.23
+- 12h20 introduction cours
+- 12h27 début code JS
