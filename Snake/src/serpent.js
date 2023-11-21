@@ -5,6 +5,7 @@ export class Serpent{
     serpentY;
     serpentParts = [];
     nombrePartie;
+    direction;
 
   constructor(x, y, taillePartie) {
     this.serpentX =x;
@@ -25,10 +26,11 @@ export class Serpent{
         ctx.fillRect(serpentParts[i].x, serpentParts[i].y, width, height);
     }
 }
-  Move(serpentParts, tete){
+  Move(serpentParts, tete,direction){
+      
     let teteSerpent ={x:tete.x, y:tete.y};
     serpentParts[0] = teteSerpent;
-    tete.x +=80;
+    
     for(let i = serpentParts.length -1 ; i> 0; i--){
       //mouvement
       serpentParts[i].x = serpentParts[i-1].x;
@@ -37,5 +39,20 @@ export class Serpent{
     serpentParts[0] = teteSerpent.x;
     serpentParts[0] = teteSerpent.y;
     console.log(tete.x);
+
+    switch (direction) {
+      case "Up":
+        tete.y -=80;
+          break;
+      case "Down":
+        tete.y +=80;
+          break;
+      case "Left":
+        tete.x -=80;
+          break;
+      case "Right":
+        tete.x +=80;
+          break;
+    } 
   }
 }
