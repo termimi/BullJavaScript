@@ -4,59 +4,45 @@ export class Serpent{
     serpentX;
     serpentY;
     serpentParts = [];
+    nombrePartie;
 
   constructor(x, y, taillePartie) {
     this.serpentX =x;
-    this.serpentY = y;
-    this.taillePartie = taillePartie;
-    for (let i = 0; i < taillePartie; i++) {
-        this.serpentParts.push({ x: this.serpentX + i * 80, y: this.serpentY });
-    }
+    this.serpentY =y;
+    this.nombrePartie = taillePartie;
   }
-
-  drawSnake() {
-        for(let i =0; i< this.serpentParts.length; i++){
-        let canvas = document.querySelector('canvas');
-        let ctx = canvas.getContext('2d');
-        if(i ==0){
-            ctx.fillStyle = 'blue';
-        }
-        else{
+  
+  drawSnake(width, height, serpentParts, snakeTete) {
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(snakeTete.x, snakeTete.y, width, height)
+    for (let i = 0; i < serpentParts.length; i++) {
+                  
+        
             ctx.fillStyle = 'green';
-        }
-        ctx.fillRect(this.serpentX + i*80, this.serpentY, 80, 80);
+       
+        ctx.fillRect(serpentParts[i].x, serpentParts[i].y, width, height);
     }
-  }
-  MoveRight(){
-    this.serpentParts.push({ x: this.serpentX +=80 , y: this.serpentY });
+}
+  Move(serpentParts, tete){
+    let teteSerpent ={x:tete.x, y:tete.y};
+    serpentParts[0] = teteSerpent
+    tete.x +=80;
+    for(let i = serpentParts.length -1 ; i> 0; i--){
+      
+      let position = {x: serpentParts[i].x, y: serpentParts[i].y};
+      //mouvement
+      
 
-    // shift = first
-    if (this.serpentParts.length > this.taillePartie) {
-      this.serpentParts.shift();
+      serpentParts[i].x = serpentParts[i-1].x;
+      serpentParts[i].y = serpentParts[i-1].y;
+
+      serpentParts[i - 1].x = position.x;
+      serpentParts[i - 1].y = position.y;
     }
+    serpentParts[0] = teteSerpent.x;
+    serpentParts[0] = teteSerpent.y;
+    console.log(tete.x);
   }
-  MoveLeft(){
-    this.serpentParts.push({ x: this.serpentX -=80 , y: this.serpentY });
-
-    // pop = last
-    if (this.serpentParts.length > this.taillePartie) {
-      this.serpentParts.pop();
-    }
-  }
-  MoveUP(){
-    for(let i = 0;i< this.serpentParts.length; i++){
-        if(i=0){
-            if (this.serpentParts.length > this.taillePartie){
-                this.serpentParts.push({ x: this.serpentX, y: this.serpentY -=80 });
-            }
-            
-        }
-        else{
-            this.serpentParts.push({ x: this.serpentX -=80, y: this.serpentY });
-        }
-    }   
-  }
-
-  
-  
 }
