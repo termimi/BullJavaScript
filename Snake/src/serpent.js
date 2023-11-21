@@ -33,13 +33,8 @@ export class Serpent{
       
       let position = {x: serpentParts[i].x, y: serpentParts[i].y};
       //mouvement
-      
-
       serpentParts[i].x = serpentParts[i-1].x;
       serpentParts[i].y = serpentParts[i-1].y;
-
-      serpentParts[i - 1].x = position.x;
-      serpentParts[i - 1].y = position.y;
     }
     serpentParts[0] = teteSerpent.x;
     serpentParts[0] = teteSerpent.y;
