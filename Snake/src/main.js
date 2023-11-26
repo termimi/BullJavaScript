@@ -18,22 +18,27 @@ for(let i =0; i< nombrePartie; i++){
     
     switch (event.key) {
       case 'ArrowUp':
+        if(direction !='Down'){
           direction = 'Up'
-          console.log('direction');
+        }
         break;
 
       case 'ArrowDown':
-      
+        if(direction !='Up'){
           direction = 'Down';
+        }
         break;
 
       case 'ArrowLeft':
-        direction = 'Left';
+        if(direction !='Right'){
+          direction = 'Left';
+        }
         break;
 
       case 'ArrowRight':  
+        if(direction !='Left'){
           direction = 'Right';
-        
+        }
         break;
     }
   }
@@ -49,7 +54,7 @@ const move = () => {
   // Rafraichit à chaque seconde
   setTimeout(() => {
     requestAnimationFrame(move);
-  }, 700);
+  }, 500);
 };
 
 requestAnimationFrame(move);
