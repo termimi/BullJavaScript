@@ -1,13 +1,15 @@
 import '../css/style.css';
 import { Serpent } from './serpent.js';
-
+import { Apple } from './Apple.js';
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const width =80;
 const height =80;
+let x;
+let y;
 let nombrePartie =3;
 let snake = new Serpent(0,0,nombrePartie)
-
+let apple = new Apple(x,y)
 let snakeTete ={x:0, y:0};
 let serpent =[];
 let direction = 'Right';
@@ -42,13 +44,19 @@ for(let i =0; i< nombrePartie; i++){
         break;
     }
   }
+  function randomApple(){
+    x = Math.floor(Math.random() * 800);
+    y = Math.floor(Math.random() * 800);
+  }
+  randomApple();
 const move = () => {
   // Dessine la grille de jeu
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, 800, 800);
-  
+  apple.drawApple(x,y,width -20,height -20);
   snake.drawSnake(width,height,serpent,snakeTete);
   snake.Move(serpent,snakeTete,direction);
+  
 
  window.addEventListener('keydown', Touche);
   // Rafraichit à chaque seconde
