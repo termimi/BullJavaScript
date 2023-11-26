@@ -53,9 +53,12 @@ const move = () => {
   // Dessine la grille de jeu
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, 800, 800);
-  apple.drawApple(x,y,width -20,height -20);
+  apple.drawApple(x,y,width,height);
   snake.drawSnake(width,height,serpent,snakeTete);
   snake.Move(serpent,snakeTete,direction);
+  if((snakeTete.x && snakeTete.y) == (apple.appleX && apple.appleY)){
+    console.log("saluuutt");
+  }
   
 
  window.addEventListener('keydown', Touche);
@@ -66,3 +69,5 @@ const move = () => {
 };
 
 requestAnimationFrame(move);
+
+/// regler le pblm de l'emplacement de la pomme;

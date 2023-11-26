@@ -25,7 +25,7 @@ export class Serpent{
        
         ctx.fillRect(serpentParts[i].x, serpentParts[i].y, width, height);
     }
-}
+  }
   Move(serpentParts, tete,direction){
       
     let teteSerpent ={x:tete.x, y:tete.y};
@@ -38,7 +38,7 @@ export class Serpent{
     }
     serpentParts[0] = teteSerpent.x;
     serpentParts[0] = teteSerpent.y;
-    console.log(tete.x);
+    
 
     switch (direction) {
       case "Up":
