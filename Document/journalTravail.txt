@@ -6,3 +6,7 @@
 Date 14.11.23
 - 12h20 introduction cours
 - 12h27 début code JS
+Date 28.11.223
+- 12h20 ajout du score et de la possibilité de manger la pomme
+-13h travail sur les PO
+-16h20 envoie d'un feedback du projet PO a Monsieur Charmier.
