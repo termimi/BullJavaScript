@@ -6,6 +6,7 @@ export class Serpent{
     serpentParts = [];
     nombrePartie;
     direction;
+    
 
   constructor(x, y, taillePartie) {
     this.serpentX =x;
@@ -27,7 +28,7 @@ export class Serpent{
     }
   }
   Move(serpentParts, tete,direction){
-      
+    const gridSize = 40;
     let teteSerpent ={x:tete.x, y:tete.y};
     serpentParts[0] = teteSerpent;
     
@@ -42,16 +43,16 @@ export class Serpent{
 
     switch (direction) {
       case "Up":
-        tete.y -=80;
+        tete.y -=gridSize;
           break;
       case "Down":
-        tete.y +=80;
+        tete.y +=gridSize;
           break;
       case "Left":
-        tete.x -=80;
+        tete.x -=gridSize;
           break;
       case "Right":
-        tete.x +=80;
+        tete.x +=gridSize;
           break;
     } 
   }

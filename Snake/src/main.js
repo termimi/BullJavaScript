@@ -3,8 +3,8 @@ import { Serpent } from './serpent.js';
 import { Apple } from './Apple.js';
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-const width =80;
-const height =80;
+const width =40;
+const height =40;
 let x;
 let y;
 let nombrePartie =3;
@@ -12,6 +12,7 @@ let snake = new Serpent(0,0,nombrePartie)
 let apple = new Apple(x,y)
 let snakeTete ={x:0, y:0};
 let serpent =[];
+let score =0;
 let direction = 'Right';
 for(let i =0; i< nombrePartie; i++){
   serpent.push({x:snakeTete.x, y:snakeTete.y});
@@ -45,19 +46,23 @@ for(let i =0; i< nombrePartie; i++){
     }
   }
   function randomApple(){
-    x = Math.floor(Math.random() * 800);
-    y = Math.floor(Math.random() * 800);
+    x = Math.floor(Math.random() * 10) * width;
+    y = Math.floor(Math.random() * 10) * width;
   }
   randomApple();
 const move = () => {
   // Dessine la grille de jeu
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, 800, 800);
+  ctx.fillStyle = 'white';
+  ctx.font ='20px Arial';
+  ctx.fillText(`votre score : ${score}`,25,40)
   apple.drawApple(x,y,width,height);
   snake.drawSnake(width,height,serpent,snakeTete);
   snake.Move(serpent,snakeTete,direction);
-  if((snakeTete.x && snakeTete.y) == (apple.appleX && apple.appleY)){
-    console.log("saluuutt");
+  if((snakeTete.x == x) && (snakeTete.y == y)){
+    score++;
+    randomApple();
   }
   
 
@@ -65,7 +70,7 @@ const move = () => {
   // Rafraichit à chaque seconde
   setTimeout(() => {
     requestAnimationFrame(move);
-  }, 500);
+  }, 120);
 };
 
 requestAnimationFrame(move);
