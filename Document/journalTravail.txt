@@ -18,3 +18,4 @@ ajout de la mort du joueur en dans le cas ou le serpent se touche lui même + aj
 ajout d'un menu "GameOver" dans le cas ou le joueur meurt.
 -15h ecriture jnrtrav
 -15h07 refactorisation plus commentaire dans le code
+-16h31 fin des commentaires
