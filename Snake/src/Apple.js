@@ -14,4 +14,8 @@ export class Apple{
         ctx.fillStyle = 'red';
         ctx.fillRect(x, y, w, h)
     }
+    randomApple(width) {
+        this.appleX = Math.floor(Math.random() * 10) * width;
+        this.appleY = Math.floor(Math.random() * 10) * width;
+      }
 }

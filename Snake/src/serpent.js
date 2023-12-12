@@ -6,12 +6,13 @@ export class Serpent{
     serpentParts = [];
     nombrePartie;
     direction;
-    
+    dead
 
-  constructor(x, y, taillePartie) {
+  constructor(x, y, taillePartie,dead) {
     this.serpentX =x;
     this.serpentY =y;
     this.nombrePartie = taillePartie;
+    this.dead = dead;
   }
   
   drawSnake(width, height, serpentParts, snakeTete) {
@@ -56,5 +57,16 @@ export class Serpent{
           break;
     } 
   }
- 
+   serpentDead(snakeTete,serpent){
+  
+    if ((snakeTete.x < 0) || (snakeTete.x >= 800) || (snakeTete.y < 0) || (snakeTete.y >= 800)) {
+      this.dead = true;
+    }
+    for(let i = 0; i < serpent.length -1; i++){
+      if(snakeTete.x == serpent[i].x && snakeTete.y == serpent[i].y){
+        this.dead = true;
+      }
+    }
+    return this.dead;
+  }
 }

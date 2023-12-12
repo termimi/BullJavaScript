@@ -1,20 +1,27 @@
 import '../css/style.css';
+// import de la classe serpent
 import { Serpent } from './serpent.js';
+// import de la casse apple
 import { Apple } from './Apple.js';
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+// largeur du carré de la pomme et du serpent
 const width = 40;
+// hauteur du carré de la pomme et du serpent
 const height = 40;
+// position x de la pomme 
 let xApple;
+// position y de la pomme
 let yApple;
+// taille en carré du serpent
 let nombrePartie = 3;
-let snake = new Serpent(0, 0, nombrePartie)
+let dead = false;
+let snake = new Serpent(0, 0, nombrePartie,dead)
 let apple = new Apple(xApple, yApple)
 let snakeTete = { x: 0, y: 0 };
 let serpent = [];
 let score = 0;
 let direction = 'Right';
-let dead = false;
 for (let i = 0; i < nombrePartie; i++) {
   serpent.push({ x: snakeTete.x, y: snakeTete.y });
 }
@@ -46,10 +53,7 @@ function Touche(event) {
       break;
   }
 }
-function randomApple() {
-  xApple = Math.floor(Math.random() * 10) * width;
-  yApple = Math.floor(Math.random() * 10) * width;
-}
+
 function deadMenu() {
   if (dead) {
     ctx.fillStyle = 'black';
@@ -60,17 +64,8 @@ function deadMenu() {
     ctx.fillText(`Appuyer sur F5 pour rejouer`, 200, 400)
   }
 }
-function serpentDead(){
-  if ((snakeTete.x < 0) || (snakeTete.x >= 800) || (snakeTete.y < 0) || (snakeTete.y >= 800)) {
-    dead = true;
-  }
-  for(let i = 0; i < serpent.length -1; i++){
-    if(snakeTete.x == serpent[i].x && snakeTete.y == serpent[i].y){
-      dead = true;
-    }
-  }
-}
-randomApple();
+
+apple.randomApple(width);
 const move = () => {
   // Dessine la grille de jeu
   if (!dead) {
@@ -79,15 +74,15 @@ const move = () => {
     ctx.fillStyle = 'white';
     ctx.font = '20px Arial';
     ctx.fillText(`votre score : ${score}`, 25, 40)
-    apple.drawApple(xApple, yApple, width, height);
+    apple.drawApple(apple.appleX, apple.appleY, width, height);
     snake.Move(serpent, snakeTete, direction);
-    if ((snakeTete.x == xApple) && (snakeTete.y == yApple)) {
+    if ((snakeTete.x == apple.appleX) && (snakeTete.y == apple.appleY)) {
       score++;
-      randomApple();
+      apple.randomApple(width);
       serpent.push({ x: snakeTete.x, y: snakeTete.y });
       nombrePartie++;
     }
-    serpentDead();
+    dead = snake.serpentDead(snakeTete,serpent);
     snake.drawSnake(width, height, serpent, snakeTete);
   }
   deadMenu();
