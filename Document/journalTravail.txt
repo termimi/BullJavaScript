@@ -16,3 +16,5 @@ Date 12.12.23
 -12h20 ajout de la mort du joueur en dans le cas ou le serpent touche le bord + 
 ajout de la mort du joueur en dans le cas ou le serpent se touche lui même + ajout d'une nouvelle partie de serpent si le joueur mange une pomme + 
 ajout d'un menu "GameOver" dans le cas ou le joueur meurt.
+-15h ecriture jnrtrav
+-15h07 refactorisation plus commentaire dans le code
