@@ -75,4 +75,4 @@ const move = () => {
 
 requestAnimationFrame(move);
 
-/// regler le pblm de l'emplacement de la pomme;
+
