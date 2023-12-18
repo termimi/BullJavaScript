@@ -125,7 +125,6 @@ const move = () => {
     requestAnimationFrame(move);
   }, 100);
 };
-
 requestAnimationFrame(move);
 
 
