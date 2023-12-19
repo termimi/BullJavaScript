@@ -37,7 +37,7 @@ export class Serpent{
     }
   }
   // mouvement du serpent
-  Move(serpentParts, tete,direction){
+  move(serpentParts, tete,direction){
     // valeur par la quelle le serpent se déplacera
     const toMove = 40;
     // tête du serpent
