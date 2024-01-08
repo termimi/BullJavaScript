@@ -1,7 +1,7 @@
 // import des classes et fichier nécessaire au jeu
 import '../css/style.css';
 // import de la classe serpent
-import { Serpent } from './serpent.js';
+import { Serpent } from './Serpents.js';
 // import de la casse apple
 import { Apple } from './Apple.js';
 
@@ -41,7 +41,7 @@ for (let i = 0; i < defaultNumbersOfParts; i++) {
   serpent.push({ x: snakeTete.x, y: snakeTete.y });
 }
 // prise en compte des touche du joueur
-function Touche(event) {
+function touche(event) {
 
   switch (event.key) {
     // change la direction du serpent vers le haut si la flèche du haut est touché
@@ -101,7 +101,7 @@ const move = () => {
     // dessine la pomme
     apple.drawApple(apple.appleX, apple.appleY, width, height);
     // bouge le serpent
-    snake.Move(serpent, snakeTete, direction);
+    snake.move(serpent, snakeTete, direction);
     // bloc d'instruction dans la cas ou le serpent touche la pomme
     if ((snakeTete.x == apple.appleX) && (snakeTete.y == apple.appleY)) {
       // ajout de plus 1 au score
@@ -119,7 +119,7 @@ const move = () => {
   // affichage du menu "GameOver"
   deadMenu();
   // ajout de la prise en compte des touche de l'utilisateur
-  window.addEventListener('keydown', Touche);
+  window.addEventListener('keydown', touche);
   // Rafraichit à chaque seconde
   setTimeout(() => {
     requestAnimationFrame(move);
