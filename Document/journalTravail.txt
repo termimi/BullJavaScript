@@ -19,3 +19,9 @@ ajout d'un menu "GameOver" dans le cas ou le joueur meurt.
 -15h ecriture jnrtrav
 -15h07 refactorisation plus commentaire dans le code
 -16h31 fin des commentaires
+Date 19.12.23
+-Exercice McDo
+Date 09.01.24
+14h02 ecriture rapport
+
+
