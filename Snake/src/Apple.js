@@ -20,7 +20,7 @@ export class Apple{
     }
     // détermination aléatoire de la position de la pomme
     randomApple(width) {
-        this.appleX = Math.floor(Math.random() * 10) * width;
-        this.appleY = Math.floor(Math.random() * 10) * width;
+        this.appleX = Math.floor(Math.random() * 20) * width;
+        this.appleY = Math.floor(Math.random() * 20) * width;
       }
 }
